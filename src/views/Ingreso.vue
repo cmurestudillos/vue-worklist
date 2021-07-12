@@ -39,6 +39,10 @@
                 </a>    
             </p>
             <small class="margin-t text-whitesmoke"><i>Version: {{version}}</i></small>
+            <small class="margin-t text-whitesmoke"> / Contacto: 
+                <a href="mailto:cmurestudillos@gmail.com?Subject=Interesado%20en%20tu%20aplicacion" class="text-darkyellow h6 mr-1"><span class="fa fa-envelope"></span></a>
+                <a href="skype:carlos.mur.estudillos?chat" class="text-darkyellow h6 ml-1"> <i class="fab fa-skype"></i></a>
+            </small>
         </div>
     </div>
 </template>
