@@ -11,7 +11,8 @@ export default createStore({
       estado: '',
       numero: 0
     },
-    user: null
+    user: null,
+    apiUrl: ''
   },
   mutations: {
     setUser(state, payload) {
@@ -46,7 +47,7 @@ export default createStore({
     },
     async ingresoUsuario({ commit }, usuario) {
       try {
-        const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBWTr-6cz8wjL_hXpxfRl2VyAAXdIBaAkw', {
+        const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAUrOy2TUr2fguzotkLxIf1_7fkN7REKRQ', {
           method: 'POST',
           body: JSON.stringify({
             email: usuario.email,
@@ -71,7 +72,7 @@ export default createStore({
     },
     async registrarUsuario({ commit }, usuario) {
       try {
-        const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBWTr-6cz8wjL_hXpxfRl2VyAAXdIBaAkw', {
+        const res = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAUrOy2TUr2fguzotkLxIf1_7fkN7REKRQ', {
           method: 'POST',
           body: JSON.stringify({
             email: usuario.email,
@@ -99,7 +100,7 @@ export default createStore({
         return commit('setUser', null)
       }
       try {
-        const res = await fetch(`https://worklistvue-default-rtdb.europe-west1.firebasedatabase.app/tareas/${state.user.localId}.json?auth=${state.user.idToken}`)
+        const res = await fetch(`https://projectworklistmanager-default-rtdb.firebaseio.com/tareas/${state.user.localId}.json?auth=${state.user.idToken}`)
         const dataDB = await res.json()
         const arrayTareas = []
         for (let id in dataDB){
@@ -113,7 +114,7 @@ export default createStore({
     },
     async setTareas({ commit, state }, tarea) {
       try {
-        const res = await fetch(`https://worklistvue-default-rtdb.europe-west1.firebasedatabase.app/tareas/${state.user.localId}/${tarea.id}.json?auth=${state.user.idToken}`, {
+        const res = await fetch(`https://projectworklistmanager-default-rtdb.firebaseio.com/tareas/${state.user.localId}/${tarea.id}.json?auth=${state.user.idToken}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -131,7 +132,7 @@ export default createStore({
     },
     async deleteTareas({ commit, state }, id) {
       try {
-        await fetch(`https://worklistvue-default-rtdb.europe-west1.firebasedatabase.app/tareas/${state.user.localId}/${id}.json?auth=${state.user.idToken}`, {
+        await fetch(`https://projectworklistmanager-default-rtdb.firebaseio.com/tareas/${state.user.localId}/${id}.json?auth=${state.user.idToken}`, {
           method: 'DELETE',
         })
         commit('eliminar', id)
@@ -144,7 +145,7 @@ export default createStore({
     },
     async updateTarea({ commit, state }, tarea) {
       try {
-        const res = await fetch(`https://worklistvue-default-rtdb.europe-west1.firebasedatabase.app/tareas/${state.user.localId}/${tarea.id}.json?auth=${state.user.idToken}`, {
+        const res = await fetch(`https://projectworklistmanager-default-rtdb.firebaseio.com/tareas/${state.user.localId}/${tarea.id}.json?auth=${state.user.idToken}`, {
           method: 'PATCH',
           body: JSON.stringify(tarea)
         })
