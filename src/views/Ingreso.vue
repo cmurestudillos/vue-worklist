@@ -34,7 +34,7 @@
 
             <p class="margin-t text-whitesmoke">
                 <small>Copyright &copy; - Designed and Created by:</small>
-                <a class="text-darkyellow text-center ml-2" href="https://www.cmurestudillos.es" target="_blank" rel="noopener noreferrer">
+                <a class="text-darkyellow text-center ml-2" href="#" target="_blank" rel="noopener noreferrer">
                     <small>Carlos Mur</small>
                 </a>    
             </p>
