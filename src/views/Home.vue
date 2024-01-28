@@ -46,7 +46,6 @@ export default {
 
       // generar id
       this.tarea.id = shortid.generate()
-      console.log(this.tarea.id)
       
       // envian los datos
       this.setTareas(this.tarea)
